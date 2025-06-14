@@ -25,7 +25,24 @@ export interface VoiceEntry {
   idea_status?: string | null;
 }
 
+export interface Task {
+  task_text: string;
+  due_date: string | null;
+  status: 'pending' | 'completed' | 'in_progress';
+  category: string | null;
+  source_entry_id: string;
+}
+
+export interface VoicePerspective {
+  text: string;
+  emotion_score: number | null;
+  perspective_type: 'rational' | 'emotional' | 'conflict';
+  source_entry_id: string;
+}
+
 export interface ProcessedResult {
   summary: string;
   tagFrequencies: Record<string, number>;
+  tasks: Task[];
+  perspectives: VoicePerspective[];
 } 
